@@ -11,10 +11,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - uses: netlify/actions/build@master
         with:
-          node-version: '10.x'
-      - name: Install Netlify Cli
-        run: |
-          npm i -g netlify-cli
-          netlify --version
+          GITHUB_TOKEN: ${{secrets.GITHUB_ACTIONS_TOKEN}}
+        env:
+          NETLIFY_DIR: dist
