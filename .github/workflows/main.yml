@@ -13,3 +13,5 @@ jobs:
       - uses: netlify/actions/build@master
         with:
           GITHUB_TOKEN: ${{secrets.GITHUB_ACTIONS_TOKEN}}
+        env:
+          NETLIFY_DIR: dist
