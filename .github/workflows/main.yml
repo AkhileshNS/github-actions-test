@@ -3,15 +3,18 @@ name: CI
 on:
   push:
     branches:
-    - master
+      - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Run a multi-line script
-      run: |
-        echo These are the directories
-        ls -li
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+      - name: Install Netlify Cli
+        run: |
+          npm i -g netlify-cli
+          netlify --version
